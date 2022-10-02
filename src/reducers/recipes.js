@@ -28,4 +28,13 @@ export const findRecipeFromSlug =(recipes,url) =>(
     )
     );
 
+
+    export const getHomeCards = (recipes) => recipes.map((dataObject) => ({
+        id: dataObject.id,
+        title: dataObject.title,
+        slug: slugifyTitle(dataObject.title),
+        image: dataObject.thumbnail,
+        difficulty: dataObject.difficulty,
+      }));
+    
 export default reducer;
