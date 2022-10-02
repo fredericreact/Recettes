@@ -1,13 +1,18 @@
 // == Import npm
 import React from 'react';
+import Recipe from '../Recipe'
+import data from '../../data'
+
 
 // == Composant
-const App = () => (
-  <div >
+const App = () => {
+console.log(data);
+return (
+  <div className="app" >
     
-    <h1>Composant : App</h1>
+    <Recipe recipe={data[0]}></Recipe>
   </div>
 );
-
+}
 // == Export
 export default App;
