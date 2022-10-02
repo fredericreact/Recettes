@@ -1,4 +1,4 @@
-import { FETCH_RECIPES_SUCCESS } from '../actions/recipes';
+import { FETCH_RECIPES_SUCCESS,FETCH_RECIPES_ERROR } from '../actions/recipes';
 import slugify from 'slugify';
 
 const slugifyTitle =(titre) =>`/recipe/${slugify(titre,{lower:true})}`
@@ -6,6 +6,7 @@ const slugifyTitle =(titre) =>`/recipe/${slugify(titre,{lower:true})}`
 const initialState ={
 
     list:[],
+    error:null,
 }
 
 const reducer =(state=initialState,action={}) => {
@@ -14,6 +15,12 @@ const reducer =(state=initialState,action={}) => {
             return{
                 ...state,
                 list:[...action.payload],
+                error:null,
+            }
+        case FETCH_RECIPES_ERROR:
+            return{
+                ...state,
+                error:'impossible de recuperer donnees',
             }
         default:
             return state;

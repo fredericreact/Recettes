@@ -6,6 +6,8 @@ import Navigation from '../../containers/Navigation';
 import './style.css'
 import {Route} from 'react-router-dom';
 
+import Error from '../../containers/Error'
+
 // == Composant
 const App = ({fetchRecipes}) => {
 useEffect(fetchRecipes,[])
@@ -15,6 +17,7 @@ return (
     <Navigation />
     <main className='main'>
     <header className="header">oRecipe</header>
+    <Error/>
     <Route exact path="/">
     <Home />
     </Route>

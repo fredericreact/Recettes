@@ -1,4 +1,4 @@
-import { FETCH_RECIPES, fetchRecipesSuccess } from "../actions/recipes";
+import { FETCH_RECIPES, fetchRecipesSuccess,fetchRecipesError } from "../actions/recipes";
 import axios from 'axios';
 
 export default (store) => (next) => (action)  => {
@@ -21,8 +21,9 @@ console.log('passe par middleware')
             dispatch(fetchRecipesSuccess(data))
         })
 
-        .catch(() =>{
-
+        .catch((err) =>{
+            console.log(err);
+            dispatch(fetchRecipesError())
         })
 
         break;
