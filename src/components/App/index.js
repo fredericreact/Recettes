@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-import Recipe from '../Recipe'
+import Recipe from '../../containers/Recipe'
 import data from '../../data'
 import Home from '../Home'
 import Navigation from '../../containers/Navigation';
@@ -34,29 +34,8 @@ return (
     <Home list={homeData}/>
     </Route>
 
-    <Route 
-    path="/recipe/:slug"
     
-    render={(routerObject) => {
-
-
-
-      console.log(routerObject);
-      
-      const {slug} =routerObject.match.params;
-
-      const foundRecipe = data.find((recipeObject) =>{
-
-        const recipeUrl = slugifyTitle(recipeObject.title);
-        const slugUrl =`/recipe/${slug}`;
-        return recipeUrl ===slugUrl;
-      })
-      
-      return <Recipe recipe={foundRecipe}/>
-    }}
-    />
-    
-    
+    <Route path="/recipe/:slug" component={Recipe}/>
     </main>
   </div>
 );
