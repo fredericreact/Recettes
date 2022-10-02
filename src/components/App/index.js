@@ -3,7 +3,7 @@ import React from 'react';
 import Recipe from '../Recipe'
 import data from '../../data'
 import Home from '../Home'
-import Navigation from '../Navigation';
+import Navigation from '../../containers/Navigation';
 import './style.css'
 import slugify from 'slugify';
 import {Route} from 'react-router-dom';
@@ -11,11 +11,7 @@ import {Route} from 'react-router-dom';
 
 const slugifyTitle =(titre) =>`/recipe/${slugify(titre,{lower:true})}`
 
-const navList = data.map((dataObject)=>({
-  id:dataObject.id,
-  title:dataObject.title,
-  slug:slugifyTitle(dataObject.title),
-}))
+
 
 const homeData = data.map((dataObject)=>({
   id:dataObject.id,
@@ -31,7 +27,7 @@ console.log(data);
 return (
   <div className="app" >
    
-    <Navigation list={navList}/>
+    <Navigation />
     <main className='main'>
     <header className="header">oRecipe</header>
     <Route exact path="/">
