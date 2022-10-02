@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-
+import {Link} from 'react-router-dom';
 
 // == Composant
 const Home = ({list}) => {
@@ -23,7 +23,7 @@ return (
             <div className='card-infos'>
             <h3 className='card-title'>{cardObject.title}</h3>
             <p className='card-difficulty'>difficulte : {cardObject.difficulty}</p>
-            <a href={cardObject.slug} className='active'>lien recette</a>
+            <Link to={cardObject.slug} className='active'>lien recette</Link>
             </div>
         </div>
 

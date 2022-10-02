@@ -2,21 +2,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-
+import {NavLink} from 'react-router-dom';
 
 // == Composant
 const Navigation = ({list}) => (
 
 <nav className='navigation'>
-    <a className='navigation-link active' href="/">acceuil</a>
+    <NavLink exact className='navigation-link' to="/">acceuil</NavLink>
     { list.map((navObject) => (
-        <a
+        <NavLink
         key={navObject.id}
         className="navigation-link"
-        href={navObject.slug}
+        to={navObject.slug}
         >
             {navObject.title}
-        </a>
+        </NavLink>
     ))
     }
         
