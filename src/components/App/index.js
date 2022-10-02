@@ -6,17 +6,21 @@ import Home from '../Home'
 import Navigation from '../Navigation';
 import './style.css'
 import slugify from 'slugify';
-import {Route} from 'react-router-dom'
+import {Route} from 'react-router-dom';
+
+
+const slugifyTitle =(titre) =>`/recipe/${slugify(titre,{lower:true})}`
+
 const navList = data.map((dataObject)=>({
   id:dataObject.id,
   title:dataObject.title,
-  slug:`/recipe/${slugify(dataObject.title,{lower:true})}`,
+  slug:slugifyTitle(dataObject.title),
 }))
 
 const homeData = data.map((dataObject)=>({
   id:dataObject.id,
   title:dataObject.title,
-  slug:`/recipe/${slugify(dataObject.title,{lower:true})}`,
+  slug:slugifyTitle(dataObject.title),
   image: dataObject.thumbnail,
   difficulty:dataObject.difficulty,
 }))
@@ -34,11 +38,28 @@ return (
     <Home list={homeData}/>
     </Route>
 
-    <Route path="/recipe/:slug">
-    <Recipe recipe={data[0]}></Recipe>
-    </Route>
+    <Route 
+    path="/recipe/:slug"
+    
+    render={(routerObject) => {
 
-   
+
+
+      console.log(routerObject);
+      
+      const {slug} =routerObject.match.params;
+
+      const foundRecipe = data.find((recipeObject) =>{
+
+        const recipeUrl = slugifyTitle(recipeObject.title);
+        const slugUrl =`/recipe/${slug}`;
+        return recipeUrl ===slugUrl;
+      })
+      
+      return <Recipe recipe={foundRecipe}/>
+    }}
+    />
+    
     
     </main>
   </div>
