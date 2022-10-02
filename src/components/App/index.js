@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React ,{useEffect} from 'react';
 import Recipe from '../../containers/Recipe'
 import Home from '../../containers/Home'
 import Navigation from '../../containers/Navigation';
@@ -7,8 +7,8 @@ import './style.css'
 import {Route} from 'react-router-dom';
 
 // == Composant
-const App = () => {
-
+const App = ({fetchRecipes}) => {
+useEffect(fetchRecipes,[])
 return (
   <div className="app" >
    

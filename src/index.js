@@ -8,7 +8,7 @@ import store from './store';
 // Composants
 
 
-import App from './components/App';
+import App from './containers/App';
 
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)
@@ -21,3 +21,4 @@ const rootReactElement =
 const target = document.getElementById('root');
 // 3. Déclenchement du rendu de React (virtuel) => DOM (page web)
 render(rootReactElement, target);
+

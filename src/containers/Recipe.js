@@ -1,8 +1,6 @@
 import {connect} from 'react-redux';
 import Recipe from '../components/Recipe';
-
 import {findRecipeFromSlug} from '../reducers/recipes';
-
 
 const mapState = (state, ownProps) => {
     console.log(ownProps);
