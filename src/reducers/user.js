@@ -1,8 +1,8 @@
 import {LOGIN_INPUT_CHANGE,LOGIN_INPUT_SUBMIT,LOGIN_INPUT_LOGOUT} from '../actions/user-actions'
 const initialState ={
-
-    email:"tt@gmail.com",
-    password:"hey",
+    loading: false,
+    email:"bouclierman@herocorp.io",
+    password:"jennifer",
     isLogged:false,
     loggedMessage:"salut",
 }
@@ -13,6 +13,11 @@ const user =(state=initialState,action={}) => {
             return{
                 ...state,
                 ...action.payload,
+            };
+        case LOGIN_INPUT_SUBMIT:
+            return{
+                ...state,
+                loading: true,
             }
         default:
             return state;
