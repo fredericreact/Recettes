@@ -5,7 +5,7 @@ import Home from '../../containers/Home'
 import Navigation from '../../containers/Navigation';
 import './style.css'
 import {Route} from 'react-router-dom';
-import LoginForm from '../../components/LoginForm';
+import LoginForm from '../../containers/LoginForm';
 import Error from '../../containers/Error'
 
 // == Composant
@@ -19,19 +19,7 @@ return (
     <header className="header">oRecipe 
 
     <LoginForm
-        email="tt@gmail.com"
-  password="hey"
-  changeField={(value,name)=>{
-    console.log('changefiel',value,name);
-  }}
-  handleLogin={()=>{
-    console.log('login');
-  }}
-  handleLogout={()=>{
-    console.log('logout');
-  }}
-  isLogged={false}
-  loggedMessage="salut"
+       
     />
     
     </header>
