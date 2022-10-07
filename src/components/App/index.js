@@ -1,5 +1,5 @@
 // == Import npm
-import React ,{useEffect} from 'react';
+import React ,{useEffect, useInsertionEffect} from 'react';
 import Recipe from '../../containers/Recipe'
 import Home from '../../containers/Home'
 import Navigation from '../../containers/Navigation';
@@ -9,8 +9,15 @@ import LoginForm from '../../containers/LoginForm';
 import Error from '../../containers/Error'
 
 // == Composant
-const App = ({fetchRecipes}) => {
-useEffect(fetchRecipes,[])
+const App = ({fetchRecipes, checkAuth}) => {
+
+
+useEffect(()=>{
+  checkAuth();
+  fetchRecipes();
+
+},[]);
+
 return (
   <div className="app" >
    

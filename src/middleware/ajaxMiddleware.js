@@ -1,5 +1,12 @@
 import { FETCH_RECIPES, fetchRecipesSuccess,fetchRecipesError } from "../actions/recipes";
-import {LOGIN_INPUT_SUBMIT, loginSuccess, loginError} from '../actions/user-actions'
+import {LOGIN_INPUT_SUBMIT, 
+    loginSuccess, 
+    loginError, 
+    CHECK_AUTH, 
+    LOGIN_INPUT_LOGOUT,
+logoutSuccess,
+logoutError} from '../actions/user-actions'
+
 import axios from 'axios';
 
 export default (store) => (next) => (action)  => {
@@ -9,6 +16,21 @@ export default (store) => (next) => (action)  => {
 
 console.log('passe par middleware')
     switch(action.type) {
+        case LOGIN_INPUT_LOGOUT:
+            axios({
+                method: 'post',
+                url: 'http://localhost:3001/logout',
+                withCredentials:true,
+            })
+            .then((res)=>{
+                const {data} = res;
+               console.log(data);
+               dispatch(logoutSuccess());
+            })
+            .catch((err)=>{
+                console.log(err);
+                dispatch(logoutError());
+            })
         case FETCH_RECIPES:
         axios ({
             method: 'get',
@@ -32,6 +54,7 @@ console.log('passe par middleware')
             axios ({
                 method: 'post',
                 url: 'http://localhost:3001/login',
+                withCredentials: true,
                 data:{
                     email:store.getState().user.email,
                     password:store.getState().user.password,
@@ -47,6 +70,25 @@ console.log('passe par middleware')
                 console.log(err);
                 dispatch(loginError());
             })
+
+        break;
+
+        case CHECK_AUTH:
+            axios({
+                method:'post',
+                url:'http://localhost:3001/isLogged',
+                withCredentials:true,
+            })
+            .then((res)=>{
+                const {data} = res;
+                if(data.logged){
+                dispatch(loginSuccess(data));
+            }
+            })
+            .catch((err)=>{
+                console.log(err);
+            });
+            break;
         default:
         break;
     }

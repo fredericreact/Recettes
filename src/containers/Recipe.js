@@ -6,7 +6,7 @@ const mapState = (state, ownProps) => {
     console.log(ownProps);
     const {url} = ownProps.match;
 return ({
-    recipe: findRecipeFromSlug(state.recipes.list, url),
+    recipe: findRecipeFromSlug(state.recipes.list, url) ||{},
 });
 
 }

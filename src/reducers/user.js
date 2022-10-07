@@ -1,4 +1,4 @@
-import {LOGIN_INPUT_CHANGE,LOGIN_INPUT_SUBMIT,LOGIN_SUCCESS,LOGIN_ERROR} from '../actions/user-actions'
+import {LOGIN_INPUT_CHANGE,LOGIN_INPUT_SUBMIT,LOGIN_SUCCESS,LOGIN_ERROR,LOGOUT_SUCCESS} from '../actions/user-actions'
 const initialState ={
     loading: false,
     email:"bouclierman@herocorp.io",
@@ -10,6 +10,14 @@ const initialState ={
 
 const user =(state=initialState,action={}) => {
     switch(action.type){
+        case LOGOUT_SUCCESS:
+            return{
+                ...state,
+                isLogged: false,
+                pseudo: '',
+                loggedMessage:'',
+            }
+
         case LOGIN_INPUT_CHANGE:
             return{
                 ...state,

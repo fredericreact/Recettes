@@ -1,6 +1,6 @@
 import { connect, createDispatchHook } from 'react-redux';
 import LoginForm from '../components/LoginForm';
-import { loginInputChange, loginInputSubmit } from '../actions/user-actions';
+import { loginInputChange, loginInputSubmit, loginInputLogout } from '../actions/user-actions';
 
 const mapState = (state)=>({
 email:state.user.email,
@@ -21,7 +21,7 @@ const mapDispatch = (dispatch)=>({
     dispatch(loginInputSubmit());
   },
   handleLogout:()=>{
-    console.log('logout');
+   dispatch(loginInputLogout());
   },
 
 
