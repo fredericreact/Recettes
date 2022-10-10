@@ -42,7 +42,7 @@ Recipe.propTypes = {
     difficulty: PropTypes.string.isRequired,
     ingredients: PropTypes.array.isRequired,
     instructions: PropTypes.array.isRequired,
-  }).isRequired,
+  }),
 };
 
 // == Export
